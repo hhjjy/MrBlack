@@ -19,4 +19,7 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('reminder-sync/', include('ReminderSync.urls')),
+    path('reminder-analysis/', include('ReminderAnalysis.urls')),
+    path('reminder-push/', include('ReminderPush.urls')),
 ]
