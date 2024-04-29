@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+# 測試 urls 連接
+from django.http import HttpResponse
+def index(request):
+    return HttpResponse("ReminderSync")
