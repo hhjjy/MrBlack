@@ -9,13 +9,22 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+import os
+from dotenv import load_dotenv
  
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import MessageEvent, TextSendMessage
  
-line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
-parser = WebhookParser(settings.LINE_CHANNEL_SECRET)
+# 讀取環境變數
+load_dotenv()
+
+# 從環境變數中取得 LINE_CHANNEL_ACCESS_TOKEN 和 LINE_CHANNEL_SECRET
+LINE_CHANNEL_ACCESS_TOKEN = os.getenv('LINE_CHANNEL_ACCESS_TOKEN')
+LINE_CHANNEL_SECRET = os.getenv('LINE_CHANNEL_SECRET')
+
+line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
+parser = WebhookParser(LINE_CHANNEL_SECRET)
  
  
 @csrf_exempt
