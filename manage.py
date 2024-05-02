@@ -8,6 +8,11 @@ def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MrBlack.settings')
     try:
+        import django
+        django.setup()
+        from django.core.management.commands.runserver import Command as runserver
+        runserver.default_port = "9000" # 更改 port 為 9000
+
         from django.core.management import execute_from_command_line
     except ImportError as exc:
         raise ImportError(
