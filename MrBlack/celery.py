@@ -16,7 +16,8 @@ app.autodiscover_tasks()
 
 @after_setup_task_logger.connect
 def setup_task_logger(logger, *args, **kwargs):
-    handler = logging.FileHandler('celery.log')
+    log_file_path = os.path.join(os.path.dirname(__file__), '..', 'log', 'celery.log')
+    handler = logging.FileHandler(log_file_path)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
