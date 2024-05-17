@@ -6,14 +6,14 @@ from datetime import datetime
 from celery.utils.log import get_task_logger
 from celery import shared_task
 from datetime import timedelta
-from celery.task import periodic_task
+# from celery.task import periodic_task
 
 
-logger = get_task_logger(__name__)
+# logger = get_task_logger(__name__)
 
-@periodic_task(run_every=timedelta(seconds=10))
-def update_database_periodically():
-    update_database.delay()
+# @periodic_task(run_every=timedelta(seconds=10))
+# def update_database_periodically():
+#     update_database.delay()
 
 logger = get_task_logger(__name__)
 
